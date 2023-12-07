@@ -1,6 +1,6 @@
 import { player } from "./entity/player/player.js";
 import { InputHandler } from "./controller/input.js"
-import { FlyingEnemy, GroundEnemy, ClimbingEnemy } from "./entity/enemy/enemy.js";
+import { FlyingEnemy, GroundEnemy, ClimbingEnemy } from "./entity/enemy.js";
 import { Background } from "./ui/background.js";
 import { UI } from "./ui/ui.js";
 //load event: waits for all dependent resources such as stylesheets and images to be fully loaded and available before it runs
@@ -30,12 +30,13 @@ window.addEventListener('load', function(){
             this.enemyTimer = 0;
             this.enemyInterval = 1000;
             this.debug = true;
-            this.score = 0;
-            this.winningScore = 5;
             this.fontColor = 'black';
             this.time = 0;
             this.maxTime = 30000; //in second
+            this.score = 0;
+            this.winningScore = 5;
             this.gameOver = false;
+            this.winning = false;
             this.lives = 5;
             this.player.currentState = this.player.states[0];
             this.player.currentState.enter();
@@ -108,7 +109,7 @@ window.addEventListener('load', function(){
         context.clearRect(0,0, canvas.width, canvas.height)
         game.update(deltaTime);
         game.draw(context);
-        if (!game.gameOver) requestAnimationFrame(animate);
+        if ((!game.gameOver) && (!game.winning)) requestAnimationFrame(animate);
     }
     animate(0);
 });

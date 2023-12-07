@@ -9,7 +9,6 @@ const states = {
     ROLLING: 4,
     DIVING: 5,
     HIT: 6,
-
 }
 
 class State {
@@ -35,7 +34,7 @@ export class Sitting extends State {
             this.game.player.setState(states.RUNNING, 1);
         } else if (input.includes('ArrowUp')){
             this.game.player.setState(states.JUMPING, 1); 
-        } else if (input.includes('Enter')){
+        } else if (input.includes('Control')){
             this.game.player.setState(states.ROLLING, 2);
         }
     }
@@ -57,7 +56,7 @@ export class Running extends State {
 
         if (input.includes('ArrowDown')){
         this.game.player.setState(states.SITTING, 0);
-        } else if (input.includes('Enter')){
+        } else if (input.includes('Control')){
             this.game.player.setState(states.ROLLING, 2);
         } else if (input.includes('ArrowUp')){
             this.game.player.setState(states.JUMPING, 1)
@@ -80,7 +79,7 @@ export class Jumping extends State {
     handleInput(input){ 
         if (this.game.player.vy > this.game.player.weight)  //game.player.weight is the maximum point in curve jump-fall
             this.game.player.setState(states.FALLING, 1);
-        else if (input.includes('Enter')){
+        else if (input.includes('Control')){
             this.game.player.setState(states.ROLLING, 2);
         } else if (input.includes('ArrowDown')){
             this.game.player.setState(states.DIVING, 0);
@@ -121,11 +120,11 @@ export class Rolling extends State {
 
     handleInput(input){
         this.game.particles.unshift(new Fire(this.game, this.game.player.x + this.game.player.width * 0.5, this.game.player.y + this.game.player.height * 0.5));
-        if (!input.includes('Enter') && this.game.player.onGround()) 
+        if (!input.includes('Control') && this.game.player.onGround()) 
             this.game.player.setState(states.RUNNING, 1);
-        else if (!input.includes('Enter') && !this.game.player.onGround())
+        else if (!input.includes('Control') && !this.game.player.onGround())
             this.game.player.setState(states.FALLING, 1);
-        else if (input.includes('Enter') && input.includes('ArrowUp') && this.game.player.onGround()){
+        else if (input.includes('Control') && input.includes('ArrowUp') && this.game.player.onGround()){
             this.game.player.vy -= 25;
         } else if (input.includes('ArrowDown') && !this.game.player.onGround()){
             this.game.player.setState(states.DIVING, 0);
@@ -152,7 +151,7 @@ export class Diving extends State {
             for (let i = 0; i < 30; i++){
                 this.game.particles.unshift(new Splash(this.game, this.game.player.x + this.game.player.width *0.5, this.game.player.y + this.game.player.height));
             }
-        } else if (input.includes('Enter') && this.game.player.onGround())
+        } else if (input.includes('Control') && this.game.player.onGround())
             this.game.player.setState(states.ROLLING, 1);
     }
 }

@@ -36,15 +36,12 @@ export class player {
     }
 
     update(input, deltaTime) {
-        //check collision
-        this.checkCollision();
-
+        this.checkCollision();                   //check collision
         this.currentState.handleInput(input);   //for player
-
-        //horizontal movement
         this.x += this.speed;
+
         if (input.includes('ArrowRight') && this.currentState !== this.states[6]) this.speed = this.maxSpeed;
-        else if (input.includes('ArrowLeft')  && this.currentState !== this.states[6]) this.speed = -this.maxSpeed;
+        else if (input.includes('ArrowLeft') && this.currentState !== this.states[6]) this.speed = -this.maxSpeed;
         else this.speed = 0; //stop 
 
         //horizontal boundaries
@@ -56,9 +53,7 @@ export class player {
         if (!this.onGround()) {
             this.y += this.gravity;
             this.vy += this.weight; // Apply gravity
-        } else {
-            this.vy = 0; // Reset velocity when on the ground
-        }
+        } else this.vy = 0; // Reset velocity when on the ground
         
         //vertical boundaries
         if (this.y > this.game.height - this.height - this.game.groundMargin) 
@@ -101,6 +96,7 @@ export class player {
                 this.game.collisions.push(new CollisionAnimation(this.game, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
                 if (this.currentState === this.states[4] || this.currentState === this.states[5]){
                     this.game.score++;
+                    if ((this.game.score >= this.game.winningScore) && (this.game.lives > 0)) this.game.winning = true;
                     this.game.floatingMessages.push(new FloatingMessage('+1', enemy.x, enemy.y, 150, 50));
                 } else {
                     this.setState(6, 0);

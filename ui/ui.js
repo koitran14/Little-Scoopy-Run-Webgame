@@ -8,8 +8,8 @@ export class UI {
         this.text;
     }
 
-    draw(context){
-        context.save(); // all the settings will only affect this text
+    draw(context) {
+        context.save();
         context.shadowOffsetX = 1;
         context.shadowOffsetY = 1;
         context.shadowColor = 'white';
@@ -18,32 +18,23 @@ export class UI {
         context.textAlign = 'left';
         context.fillStyle = this.game.fontColor;
 
-        //score
         context.fillText('Score: ' + this.game.score, 20, 50);
-
-        //timer
         context.font = this.fontSize * 0.8 + 'px ' + this.fontFamily;
         context.fillText('Timer: ' + (this.game.time * 0.001).toFixed(1), 20, 80);
-        
-        //lives
-        for (let i = 0; i < this.game.lives; i++){
+
+        for (let i = 0; i < this.game.lives; i++) {
             context.drawImage(this.livesImage, 30 * i + 20, 95, 25, 25);
         }
 
-        //game over options
-        if (this.game.lives === 0){
-            this.title = 'Love at first bite?';
-            this.text = 'Nope. Better luck next time!';
-        } else if (this.game.score < this.game.winningScore && this.game.lives > 0){
-            this.title = 'Are you scared?';
-            this.text = 'Be brave next time, they don\'t bite. Perhaps...';
-        } else if (this.game.score > this.game.winningScore && this.game.lives < 0) {
-            this.title = 'Boo-ya';
-            this.text = 'What are creatures of the night afraid of? YOU!!!'
+        if (this.game.gameOver){
+            this.title = (this.game.lives ===0 ) ? 'Love at first bite?': 'Are you scared?';
+            this.text = (this.game.lives ===0 ) ? 'Nope. Better luck next time!': 'Be brave next time, they don\'t bite. Perhaps...';
+        } else if (this.game.winning){
+            this.title = 'Boo-ya';            
+            this.text = 'What are creatures of the night afraid of? YOU!!!';
         }
 
-        //gameover message 
-        if (this.game.gameOver){
+        if (this.game.gameOver || this.game.winning){
             context.textAlign = 'center';
             context.fillStyle = this.game.shadowColor;
             context.font = this.fontSize * 2 + 'px ' + this.fontFamily;
