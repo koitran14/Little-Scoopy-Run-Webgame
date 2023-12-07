@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://127.0.0.1:5500/src/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Scoopy Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&amp;family=Dancing+Script&amp;family=M+PLUS+Rounded+1c:wght@100;300;400;500;700&amp;family=Open+Sans:wght@300&amp;family=Ysabeau+Infant:wght@300&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./Fire Scoopy Game_files/style.css">
+</head>
+<body data-new-gr-c-s-check-loaded="14.1047.0" data-gr-ext-installed="">
+    <canvas id="canvas1" width="900" height="500"></canvas>
+    <img id="player" src="./Fire Scoopy Game_files/player.png" alt="player">
+    <img id="layer1" src="./Fire Scoopy Game_files/layer-1.png" alt="layer"> 
+    <img id="layer2" src="./Fire Scoopy Game_files/layer-2.png" alt="layer"> 
+    <img id="layer3" src="./Fire Scoopy Game_files/layer-3.png" alt="layer"> 
+    <img id="layer4" src="./Fire Scoopy Game_files/layer-4.png" alt="layer"> 
+    <img id="layer5" src="./Fire Scoopy Game_files/layer-5.png" alt="layer"> 
+
+    <img id="enemy_fly" src="./Fire Scoopy Game_files/enemy_fly.png" alt="enemy"> 
+    <img id="enemy_plant" src="./Fire Scoopy Game_files/enemy_plant.png" alt="enemy"> 
+    <img id="enemy_spider" src="./Fire Scoopy Game_files/enemy_spider.png" alt="enemy"> 
+    <img id="fire" src="./Fire Scoopy Game_files/fire.png" alt="particle"> 
+    <img id="collisionAnimation" src="./Fire Scoopy Game_files/boom.png" alt="colli"> 
+
+    <img id="lives" src="./Fire Scoopy Game_files/lives.png" alt="colli"> 
+    <script type="module" src="./Fire Scoopy Game_files/main.js.download"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
